@@ -4,3 +4,4 @@ Brain-machine Interface
 # member
 中村龍矢 nrryuya
 橋本深生 miyuh
+若島久幸 wakashimaHisayuki
