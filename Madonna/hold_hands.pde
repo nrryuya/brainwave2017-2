@@ -2,7 +2,7 @@ PImage background_idle;
 PImage hand;
 float change_height;
 
-void hold_hands(){
+int hold_hands(){
   //Write procedure here.
   
   
@@ -20,5 +20,6 @@ void hold_hands(){
   tint( #FFFFFF, 200);
   image(hand,  width / 2 -75, height / 2 -50 + change_height, 150,100);
   
+  return 2;
   
 }

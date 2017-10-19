@@ -40,12 +40,13 @@ void setup(){
 
 void draw(){
   //Call method in the following order.
-  //start_game();
-  hold_hands();
-  check_brainwave();  
-  //finish();
-  //get_score();
-  //result();
+int nextState= 0;
+  if(state == 0){ nextState = start_game(); }
+  else if(state == 1){ nextState = hold_hands(); }
+  else if(state == 2){ nextState = check_brainwave(); }
+  else if(state == 3){ nextState = finish(); }
+  else if(state == 4){ nextState = result(); }
+
 
   // The following is default.
   //float x1, y1, x2, y2;

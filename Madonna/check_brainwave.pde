@@ -1,4 +1,4 @@
-void check_brainwave(){
+int check_brainwave(){
   float x1, y1, x2, y2;
   background(BG_COLOR);
   for(int ch = 0; ch < N_CHANNELS; ch++){
@@ -22,5 +22,7 @@ void check_brainwave(){
   for(int ch = 0; ch < N_CHANNELS; ch++){
     text(LABELS[ch], offsetX[ch], offsetY[ch]);
   }
+  
+  return 3;
 
 }
