@@ -7,7 +7,7 @@ void hold_hands(){
   
   
   background_idle = loadImage("static/hand_shake.jpg");
-  hand = loadImage("static/shand.jpg");
+  hand = loadImage("static/hand.jpg");
   background(#FFFFFF, 255);
   image(background_idle, 0, 0, 1000, 600);
   
