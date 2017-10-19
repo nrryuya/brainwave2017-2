@@ -42,7 +42,7 @@ void draw(){
   //Call method in the following order.
   //start_game();
   hold_hands();
-  //check_brainwave();  
+  check_brainwave();  
   //finish();
   //get_score();
   //result();
