@@ -1,4 +1,14 @@
 int start_game(){
-  //Write procedure here.
-  return 1;
+
+
+PImage img;
+ img = loadImage("170324_mdna_skin_mainvisual.jpg");
+  
+image(img,0,0,1000,600);
+ textSize(100);
+   fill(0);
+  text("CLICK HERE",50,450);
+  
+ 
+return 1; 
 }
