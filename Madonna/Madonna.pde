@@ -23,11 +23,13 @@ int pointer = 0;
 float[] offsetX = new float[N_CHANNELS];
 float[] offsetY = new float[N_CHANNELS];
 
+int state;
 
 void setup(){
   size(1000, 600);
   frameRate(30);
   smooth();
+  state = 0;
   for(int ch = 0; ch < N_CHANNELS; ch++){
     offsetX[ch] = (width / N_CHANNELS) * ch + 15;
     offsetY[ch] = height / 2;
@@ -36,12 +38,12 @@ void setup(){
 
 void draw(){
   //Call method in the following order.
-  //start_game();
-  //hold_hands();
-  //check_brainwave();  
-  //finish();
-  //get_score();
-  //result();
+  int nextState= 0;
+  if(state == 0){ nextState = start_game(); }
+  else if(state == 1){ nextState = hold_hands(); }
+  else if(state == 2){ nextState = check_brainwave(); }
+  else if(state == 3){ nextState = finish(); }
+  else if(state == 4){ nextState = result(); }
 
   // The following is default.
   //float x1, y1, x2, y2;
