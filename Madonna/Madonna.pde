@@ -25,11 +25,13 @@ float[] offsetY = new float[N_CHANNELS];
 
 float degree_in_hold_hands;
 
+int state;
+
 void setup(){
   size(1000, 600);
   frameRate(30);
   smooth();
-  
+  state = 0;
   degree_in_hold_hands = 0;
   
   for(int ch = 0; ch < N_CHANNELS; ch++){
