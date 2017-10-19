@@ -24,6 +24,7 @@ float[] offsetX = new float[N_CHANNELS];
 float[] offsetY = new float[N_CHANNELS];
 
 int state;
+float score;
 
 void setup(){
   size(1000, 600);
