@@ -2,12 +2,12 @@ int start_game(){
   //Write procedure here.
 
     fill(0);
-  textSize(100);
-  text("start!!", 100, 350);
-    t = (millis() - t_start) / 1000.0; 
+  textSize(60);
+  text("push s key to start!!", 100, 350);
+    
 
 
-    if (t > 3){
+    if ((keyPressed == true)&& ( key == 's')){
     
     return 1;
   }else{

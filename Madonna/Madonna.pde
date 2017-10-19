@@ -30,6 +30,7 @@ int nextState;
 
 long t_start;
 float t;
+int mcnt;
 
 void setup(){
   size(1000, 600);
