@@ -74,7 +74,7 @@ void draw(){
 
 void oscEvent(OscMessage msg){
   float data;
-  if(msg.checkAddrPattern("/muse/alpha_relative")){
+  if(msg.checkAddrPattern("/muse/elements/alpha_relative")){
     for(int ch = 0; ch < N_CHANNELS; ch++){
       data = msg.get(ch).floatValue();
       data = (data - (MAX_MICROVOLTS / 2)) / (MAX_MICROVOLTS / 2); // -1.0 1.0
