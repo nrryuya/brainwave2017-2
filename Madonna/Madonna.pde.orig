@@ -23,26 +23,24 @@ int pointer = 0;
 float[] offsetX = new float[N_CHANNELS];
 float[] offsetY = new float[N_CHANNELS];
 
+<<<<<<< bcee0cf3abc9f15af3d0e455b532d6087741ff62
 int state;
 float score;
+=======
 float degree_in_hold_hands;
-
-int state;
-int nextState;
-
-long t_start;
-float t;
-int mcnt;
+>>>>>>> make hold_hands.pde
 
 void setup(){
   size(1000, 600);
   frameRate(30);
   smooth();
+<<<<<<< bcee0cf3abc9f15af3d0e455b532d6087741ff62
   state = 0;
-  nextState= 0;
-  degree_in_hold_hands = 0;
-    t_start = millis();
+=======
   
+  degree_in_hold_hands = 0;
+  
+>>>>>>> make hold_hands.pde
   for(int ch = 0; ch < N_CHANNELS; ch++){
     offsetX[ch] = (width / N_CHANNELS) * ch + 15;
     offsetY[ch] = height / 2;
@@ -50,20 +48,22 @@ void setup(){
 }
 
 void draw(){
-  background(255);
   //Call method in the following order.
-
-  nextState = 0;
-
+<<<<<<< bcee0cf3abc9f15af3d0e455b532d6087741ff62
+  int nextState= 0;
   if(state == 0){ nextState = start_game(); }
   else if(state == 1){ nextState = hold_hands(); }
   else if(state == 2){ nextState = check_brainwave(); }
   else if(state == 3){ nextState = finish(); }
   else if(state == 4){ nextState = result(); }
-
-  if(state != nextState){ t_start = millis(); }
-    state = nextState;
-
+=======
+  //start_game();
+  hold_hands();
+  //check_brainwave();  
+  //finish();
+  //get_score();
+  //result();
+>>>>>>> make hold_hands.pde
 
   // The following is default.
   //float x1, y1, x2, y2;
@@ -93,7 +93,7 @@ void draw(){
 
 void oscEvent(OscMessage msg){
   float data;
-  if(msg.checkAddrPattern("/muse/elements/alpha_relative")){
+  if(msg.checkAddrPattern("/muse/alpha_relative")){
     for(int ch = 0; ch < N_CHANNELS; ch++){
       data = msg.get(ch).floatValue();
       data = (data - (MAX_MICROVOLTS / 2)) / (MAX_MICROVOLTS / 2); // -1.0 1.0
