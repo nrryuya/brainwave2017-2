@@ -9,6 +9,9 @@ image(img,0,0,1000,600);
    fill(0);
   text("CLICK HERE",50,450);
   
- 
+if (mousePressed == true&&mouseX<100&&mouseY>500){
 return 1; 
+}
+else return 0;
+
 }
