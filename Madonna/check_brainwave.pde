@@ -1,4 +1,5 @@
 int check_brainwave(){
+
   float x1, y1, x2, y2;
   background(BG_COLOR);
   for(int ch = 0; ch < N_CHANNELS; ch++){
@@ -23,6 +24,10 @@ int check_brainwave(){
     text(LABELS[ch], offsetX[ch], offsetY[ch]);
   }
   
-  return 3;
+  t = (millis() - t_start) / 1000.0; 
+  if (t > 10){
+    
+    return 3;
+  }return 2;
 
 }

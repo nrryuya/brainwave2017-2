@@ -19,7 +19,13 @@ int hold_hands(){
   change_height = 30*sin(degree_in_hold_hands);
   tint( #FFFFFF, 200);
   image(hand,  width / 2 -75, height / 2 -50 + change_height, 150,100);
-  
-  return 2;
+ 
+    fill(0);
+  textSize(100);
+    t = (millis() - t_start) / 1000.0; 
+    if (t > 6){
+    
+    return 2;
+  }return 1;
   
 }

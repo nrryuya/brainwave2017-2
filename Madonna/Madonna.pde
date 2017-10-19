@@ -26,13 +26,19 @@ float[] offsetY = new float[N_CHANNELS];
 float degree_in_hold_hands;
 
 int state;
+int nextState;
+
+long t_start;
+float t;
 
 void setup(){
   size(1000, 600);
   frameRate(30);
   smooth();
   state = 0;
+  nextState= 0;
   degree_in_hold_hands = 0;
+    t_start = millis();
   
   for(int ch = 0; ch < N_CHANNELS; ch++){
     offsetX[ch] = (width / N_CHANNELS) * ch + 15;
@@ -41,14 +47,16 @@ void setup(){
 }
 
 void draw(){
+  background(255);
   //Call method in the following order.
-int nextState= 0;
+  nextState = 0;
   if(state == 0){ nextState = start_game(); }
   else if(state == 1){ nextState = hold_hands(); }
   else if(state == 2){ nextState = check_brainwave(); }
   else if(state == 3){ nextState = finish(); }
   else if(state == 4){ nextState = result(); }
-
+  if(state != nextState){ t_start = millis(); }
+    state = nextState;
 
   // The following is default.
   //float x1, y1, x2, y2;
