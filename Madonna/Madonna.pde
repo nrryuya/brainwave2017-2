@@ -23,11 +23,15 @@ int pointer = 0;
 float[] offsetX = new float[N_CHANNELS];
 float[] offsetY = new float[N_CHANNELS];
 
+float degree_in_hold_hands;
 
 void setup(){
   size(1000, 600);
   frameRate(30);
   smooth();
+  
+  degree_in_hold_hands = 0;
+  
   for(int ch = 0; ch < N_CHANNELS; ch++){
     offsetX[ch] = (width / N_CHANNELS) * ch + 15;
     offsetY[ch] = height / 2;
@@ -37,7 +41,7 @@ void setup(){
 void draw(){
   //Call method in the following order.
   //start_game();
-  //hold_hands();
+  hold_hands();
   //check_brainwave();  
   //finish();
   //get_score();
