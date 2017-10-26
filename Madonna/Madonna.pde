@@ -54,6 +54,7 @@ void draw(){
   nextState = 0;
 
   if(state == 0){ nextState = start_game(); }
+  else if(state == 5){ nextState = question(); }
   else if(state == 1){ nextState = hold_hands(); }
   else if(state == 2){ nextState = check_brainwave(); }
   else if(state == 3){ nextState = finish(); }
