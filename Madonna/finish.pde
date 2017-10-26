@@ -6,31 +6,23 @@ int finish(){
   dere = loadImage("dere.jpg");
   akiramero = loadImage("akiramero.jpg");
   hasyaguna = loadImage("hasyaguna.jpg");
-  score = 10;
+  //score = 10;
   background(#FFFFFF, 255);
-  //textSize(100);
-  //text("push s key to start!!", 100, 300);
-  //if ((keyPressed == true)&& ( key == 's')){
     
-    if (score > 50){
-      
-      finish_good();
-      
-    }else if(score < 50 && score >=30){
-      
-      finish_bad();
-      
-    }else{
-      finish_sobad(); 
-    }
-  
-  //}else{
-  //  return 3;
-  //}
-  
+  if (score > 50){
+    
+    finish_good();
+    
+  }else if(score < 50 && score >=30){
+    
+    finish_bad();
+    
+  }else{
+    finish_sobad(); 
+  }
   
   t = (millis() - t_start) / 1000.0; 
-  if (t > 6){
+  if (t > 3){
     
     return 4;
   }return 3;
