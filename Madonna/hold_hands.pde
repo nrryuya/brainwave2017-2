@@ -22,9 +22,9 @@ int hold_hands(){
  
     fill(0);
   textSize(100);
-    t = (millis() - t_start) / 1000.0; 
-    if (t > 6){
-    
-    return 2;
-  }return 1;
+
+    if ((keyPressed == true)&& ( key == 'c')){
+      pointer = 0; 
+      return 2;
+    }return 1;
 }
