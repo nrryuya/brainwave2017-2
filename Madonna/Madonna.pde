@@ -62,7 +62,7 @@ void draw(){
 
   if(state != nextState){ t_start = millis(); }
     state = nextState;
-
+  
 
   // The following is default.
   //float x1, y1, x2, y2;
