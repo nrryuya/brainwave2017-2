@@ -2,7 +2,7 @@ import oscP5.*;
 import netP5.*;
 
 final int N_CHANNELS = 4;
-final int BUFFER_SIZE = 100;
+final int BUFFER_SIZE = 220;
 final float MAX_MICROVOLTS = 1682.815;
 final float DISPLAY_SCALE = 200.0;
 final String[] LABELS = new String[] {
@@ -36,11 +36,10 @@ void setup(){
   size(1000, 600);
   frameRate(30);
   smooth();
-  state = 0;
-  nextState= 0;
+  state = 0;  
+  nextState = 0;
   degree_in_hold_hands = 0;
     t_start = millis();
-  
   for(int ch = 0; ch < N_CHANNELS; ch++){
     offsetX[ch] = (width / N_CHANNELS) * ch + 15;
     offsetY[ch] = height / 2;
@@ -49,10 +48,6 @@ void setup(){
 
 void draw(){
   background(255);
-  //Call method in the following order.
-
-  nextState = 0;
-
   if(state == 0){ nextState = start_game(); }
   else if(state == 5){ nextState = question(); }
   else if(state == 1){ nextState = hold_hands(); }
@@ -65,10 +60,10 @@ void draw(){
 
 void oscEvent(OscMessage msg){
   float data;
-  if(msg.checkAddrPattern("/muse/elements/alpha_relative")){
+  if(msg.checkAddrPattern("/muse/alpha_relative")){
     for(int ch = 0; ch < N_CHANNELS; ch++){
       data = msg.get(ch).floatValue();
-      //data = (data - (MAX_MICROVOLTS / 2)) / (MAX_MICROVOLTS / 2); // -1.0 1.0
+      data = (data - (MAX_MICROVOLTS / 2)) / (MAX_MICROVOLTS / 2); // -1.0 1.0
       buffer[ch][pointer] = data;
     }
     pointer = (pointer + 1) % BUFFER_SIZE;
