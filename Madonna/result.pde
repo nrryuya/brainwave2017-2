@@ -18,7 +18,6 @@ int result(){
   image(background_idle, 0, 0, 1000, 600);
   
   fill(0);
-  score =5;
   String a = str(score);
   
   textSize(100);
