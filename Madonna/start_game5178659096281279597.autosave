@@ -6,9 +6,11 @@ int start_game(){
 image(img,0,0,1000,600);
 
 
-    fill(0);
-  textSize(60);
-  text("push s key to start!!", 100, 350);
+   fill(0);
+  //textSize(60);
+  PFont font1 = createFont("Georgia",60);
+  textFont(font1);
+  text("push s key to start", 100, 350);
     
 
 
