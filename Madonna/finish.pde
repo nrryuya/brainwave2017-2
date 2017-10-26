@@ -1,10 +1,11 @@
 int finish(){
-  //Write procedure here.
-  println(calc_score());
-  return 4;
-}
+  fill(0);
+  textSize(100);
+  text("finish!", 100, 350);
+      t = (millis() - t_start) / 1000.0; 
+    if (t > 6){
+    
+    return 4;
+  }return 3;
 
-int calc_score(){
-  
-  return score
 }
