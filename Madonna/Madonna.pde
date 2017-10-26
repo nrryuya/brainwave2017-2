@@ -2,7 +2,7 @@ import oscP5.*;
 import netP5.*;
 
 final int N_CHANNELS = 4;
-final int BUFFER_SIZE = 220;
+final int BUFFER_SIZE = 100;
 final float MAX_MICROVOLTS = 1682.815;
 final float DISPLAY_SCALE = 200.0;
 final String[] LABELS = new String[] {
@@ -67,7 +67,7 @@ void oscEvent(OscMessage msg){
   if(msg.checkAddrPattern("/muse/elements/alpha_relative")){
     for(int ch = 0; ch < N_CHANNELS; ch++){
       data = msg.get(ch).floatValue();
-      data = (data - (MAX_MICROVOLTS / 2)) / (MAX_MICROVOLTS / 2); // -1.0 1.0
+      //data = (data - (MAX_MICROVOLTS / 2)) / (MAX_MICROVOLTS / 2); // -1.0 1.0
       buffer[ch][pointer] = data;
     }
     pointer = (pointer + 1) % BUFFER_SIZE;

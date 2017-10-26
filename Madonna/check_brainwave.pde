@@ -26,7 +26,8 @@ int check_brainwave(){
   
   t = (millis() - t_start) / 1000.0; 
   if (t > 10){
-    
+    get_score();
     return 3;
-  }return 2;
+  }
+  return 2;
 }
