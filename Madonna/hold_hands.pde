@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-int hold_hands(){
-  //Write procedure here.
-  return 2;
-=======
+
 PImage background_idle;
 PImage hand;
 float change_height;
@@ -31,7 +27,5 @@ int hold_hands(){
     if (t > 6){
     
     return 2;
-  }return 1;
+  }
   
->>>>>>> miyu
-}
