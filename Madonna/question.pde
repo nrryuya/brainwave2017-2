@@ -1,14 +1,17 @@
+PImage question;
 int question(){
-    background(BG_COLOR);
-    fill(255);
+    question = loadImage("question.jpg");
+    background(#FFFFFF, 255);
+    image(question, 0, 0, 1000, 600);
+    fill(0);
     textSize(30);
     text("What do you have ?", 150,200);
     
-  fill(255);
-  rect(100,350,100,50);
+  fill(255); //<>//
+  rect(100,350,100,50); //<>//
   rect(250,350,100,50);
-  rect(400,350,100,50); //<>//
-  rect(550,350,100,50); //<>//
+  rect(400,350,100,50);
+  rect(550,350,100,50);
  
   fill(0);
   textSize(20);
