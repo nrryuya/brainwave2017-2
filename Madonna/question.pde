@@ -1,30 +1,34 @@
 int question(){
     background(BG_COLOR);
     fill(255);
-    text("click", 80,100);
+    textSize(30);
+    text("What do you have ?", 150,200);
     
   fill(255);
-  rect(100,350,50,50);
-
-  rect(200,350,50,50); //<>//
- //<>//
-  rect(300,350,50,50);
+  rect(100,350,100,50);
+  rect(250,350,100,50);
+  rect(400,350,100,50); //<>//
+  rect(550,350,100,50); //<>//
  
   fill(0);
   textSize(20);
-  text("click", 100,390);
-  text("click", 200,390);
-  text("click", 300,390);
+  text("Love", 110,390);
+  text("Money", 260,390);
+  text("Muscle", 410,390);
+  text("Nothing", 560,390);
   
-  if ((mousePressed == true)&& ( mouseX <150)&&(mouseX >100)&&(mouseY>350)&&(mouseY<400)){
-    score += 10;
+  if ((mousePressed == true)&& ( mouseX <200)&&(mouseX >100)&&(mouseY>350)&&(mouseY<400)){
+    score += 20;
     return 1;
-  }else if((mousePressed == true)&& ( mouseX <250)&&(mouseX >200)&&(mouseY>350)&&(mouseY<400)){
-    
+  }else if((mousePressed == true)&& ( mouseX <350)&&(mouseX >250)&&(mouseY>350)&&(mouseY<400)){
+    score += 5;
     return 1;
-  }else if((mousePressed == true)&& ( mouseX <350)&&(mouseX >300)&&(mouseY>350)&&(mouseY<400)){
-    score -= 10;
+  }else if((mousePressed == true)&& ( mouseX <500)&&(mouseX >400)&&(mouseY>350)&&(mouseY<400)){
+    score += 15;
     return 1;
+  }else if((mousePressed == true)&& ( mouseX <650)&&(mouseX >550)&&(mouseY>350)&&(mouseY<400)){
+
+    return 3;
   }else{
           return 5;
   }
