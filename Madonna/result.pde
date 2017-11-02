@@ -14,18 +14,33 @@ int textvelocity = 5;
 
 int result(){
   //Write procedure here.
-  background_idle = loadImage("20120419160139_img1_10.jpg");
-  image(background_idle, 0, 0, 1000, 600);
   
-  fill(0);
+    fill(0);
+  score =5;
   String a = str(score);
   
-  textSize(100);
-  text("your score is ", 200, height/2-100);
+  if (score<5){
+  background_idle = loadImage("Dem-hillary-clinton.jpg");
+  image(background_idle, 0, 0, 1000, 600);
+  }
   
-  textSize(200);
+  if (score>=5 && score<10){
+  background_idle = loadImage("2015071903_01_0b.jpg");
+  image(background_idle, 0, 0, 1000, 600);
+  }
+  
+  if (score>10){
+  background_idle = loadImage("a0212807_1281694.jpg");
+  image(background_idle, 0, 0, 1000, 600);
+  }
+ 
+  
+  textSize(50);
+  text("your score is ", 500, height/2-100);
+  
+  textSize(100);
   fill(255,0,0);
-  text(a + "!?",width/2-150,height/2+100);
+  text(a + "!?",width/2+50,height/2+100);
   
   noStroke();
  
