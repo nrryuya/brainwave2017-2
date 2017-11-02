@@ -1,5 +1,6 @@
 import oscP5.*;
 import netP5.*;
+import ddf.minim.*;
 
 final int N_CHANNELS = 4;
 final int BUFFER_SIZE = 220;
@@ -23,6 +24,8 @@ int num_check_brainwave = 0;
 long t_start;
 float t;
 int mcnt;
+Minim minim;
+AudioPlayer player;
 
 void setup(){
   size(1000, 600, P3D);
@@ -31,7 +34,10 @@ void setup(){
   state = 0;  
   nextState = 0;
   degree_in_hold_hands = 0;
-    t_start = millis();
+  t_start = millis();
+  minim = new Minim(this);
+  player = minim.loadFile("Butterfly.mp3");
+  player.play();
 }
 
 void draw(){
@@ -131,4 +137,3 @@ class Platform {
     return(an);
   }
 }
-// the end of the difinition of Platform()

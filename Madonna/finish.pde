@@ -22,7 +22,7 @@ int finish(){
   }
   
   t = (millis() - t_start) / 1000.0; 
-  if (t > 3){
+  if (t > 5){
     
     return 4;
   }return 3;
