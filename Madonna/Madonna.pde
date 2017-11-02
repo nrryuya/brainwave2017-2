@@ -5,29 +5,21 @@ import ddf.minim.*;
 final int N_CHANNELS = 4;
 final int BUFFER_SIZE = 220;
 final float MAX_MICROVOLTS = 1682.815;
-final float DISPLAY_SCALE = 200.0;
-final String[] LABELS = new String[] {
-  "TP9", "FP1", "FP2", "TP10"
-};
+final float DISPLAY_SCALE = 300.0;
 
 final color BG_COLOR = color(0, 0, 0);
-final color AXIS_COLOR = color(255, 0, 0);
-final color GRAPH_COLOR = color(0, 0, 255);
-final color LABEL_COLOR = color(255, 255, 0);
-final int LABEL_SIZE = 21;
 
 final int PORT = 5000;
 OscP5 oscP5 = new OscP5(this, PORT);
 
 float[][] buffer = new float[N_CHANNELS][BUFFER_SIZE];
 int pointer = 0;
-float[] offsetX = new float[N_CHANNELS];
-float[] offsetY = new float[N_CHANNELS];
 
 int state;
 float score;
 float degree_in_hold_hands;
 int nextState;
+int num_check_brainwave = 0;
 
 long t_start;
 float t;
@@ -36,17 +28,13 @@ Minim minim;
 AudioPlayer player;
 
 void setup(){
-  size(1000, 600);
+  size(1000, 600, P3D);
   frameRate(30);
   smooth();
   state = 0;  
   nextState = 0;
   degree_in_hold_hands = 0;
-    t_start = millis();
-  for(int ch = 0; ch < N_CHANNELS; ch++){
-    offsetX[ch] = (width / N_CHANNELS) * ch + 15;
-    offsetY[ch] = height / 2;
-  }
+  t_start = millis();
   minim = new Minim(this);
   player = minim.loadFile("Butterfly.mp3");
   player.play();
@@ -55,30 +43,97 @@ void setup(){
 void draw(){
   background(255);
   if(state == 0){ nextState = start_game(); }
-  else if(state == 5){ nextState = question(); }
+  else if(state == 5){ nextState = question(); }  
+  else if(state == 6){ nextState = question2(); }
+  else if(state == 7){ nextState = question3(); }
   else if(state == 1){ nextState = hold_hands(); }
   else if(state == 2){ nextState = check_brainwave(); }
   else if(state == 3){ nextState = finish(); }
   else if(state == 4){ nextState = result(); }
   if(state != nextState){ t_start = millis(); }
-    state = nextState;
+    if(state ==5 || state == 6 || state == 7){
+      if(keyPressed){
+        state = nextState;
+      }
+    }else{
+      state = nextState;
+    }
 }
+
 
 void oscEvent(OscMessage msg){
   float data;
-  if(msg.checkAddrPattern("/muse/alpha_relative")){
+  if(msg.checkAddrPattern("/muse/elements/beta_absolute")){
     for(int ch = 0; ch < N_CHANNELS; ch++){
       data = msg.get(ch).floatValue();
-      data = (data - (MAX_MICROVOLTS / 2)) / (MAX_MICROVOLTS / 2); // -1.0 1.0
-      buffer[ch][pointer] = data;
+      buffer[ch][pointer] = data * DISPLAY_SCALE;
     }
+    println(buffer[1][pointer], buffer[2][pointer]);
     pointer = (pointer + 1) % BUFFER_SIZE;
   }
 }
 
-void stop()
-{
-  player.close();
-  minim.stop();
-  super.stop();
+class Platform {
+
+  float x, y, z, an;
+
+  float affect = 125;
+
+  Platform() {
+
+    x = 0;
+    y = 0;
+  }
+
+  void position(float tx, float ty) {
+
+    x = tx;
+    y = ty;
+    z = -100;
+
+    an = 0;
+  }
+
+  void update(float ux, float uy) {
+
+    float mdist = dist(ux, uy, x, y);
+
+    float lift = map(mdist, 0, affect, PI, 0);
+    
+    float easing = map(mdist, 0, affect, .25, .01);
+    
+    if(easing < .01){
+      easing = .01;
+    }
+    
+    if(easing > 1){
+      easing = 1;
+    }
+
+    if (mdist < affect) {
+      an += (lift - an) * easing;
+    } else {
+      an += (0 - an) * easing;
+    }
+    
+    if(mousePressed){
+      an += (0 - an) * .1;
+    }
+
+
+    z = -100 + ((50 * cos(an))*map(zPos,0,-115,0,1));
+  }
+
+  void display() {
+    noStroke();
+    fill(0, 0, map(an,0,PI,255,100));
+    pushMatrix();
+    translate(x, y, z); 
+    box(22);
+    popMatrix();
+  }
+
+  float getAngle() {
+    return(an);
+  }
 }
