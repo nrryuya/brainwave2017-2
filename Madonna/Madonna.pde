@@ -1,5 +1,6 @@
 import oscP5.*;
 import netP5.*;
+import ddf.minim.*;
 
 final int N_CHANNELS = 4;
 final int BUFFER_SIZE = 220;
@@ -31,6 +32,8 @@ int nextState;
 long t_start;
 float t;
 int mcnt;
+Minim minim;
+AudioPlayer player;
 
 void setup(){
   size(1000, 600);
@@ -44,6 +47,9 @@ void setup(){
     offsetX[ch] = (width / N_CHANNELS) * ch + 15;
     offsetY[ch] = height / 2;
   }
+  minim = new Minim(this);
+  player = minim.loadFile("Butterfly.mp3");
+  player.play();
 }
 
 void draw(){
@@ -68,4 +74,11 @@ void oscEvent(OscMessage msg){
     }
     pointer = (pointer + 1) % BUFFER_SIZE;
   }
+}
+
+void stop()
+{
+  player.close();
+  minim.stop();
+  super.stop();
 }
