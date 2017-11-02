@@ -49,14 +49,23 @@ void setup(){
 void draw(){
   background(255);
   if(state == 0){ nextState = start_game(); }
-  else if(state == 5){ nextState = question(); }
+  else if(state == 5){ nextState = question(); }  
+  else if(state == 6){ nextState = question2(); }
+  else if(state == 7){ nextState = question3(); }
   else if(state == 1){ nextState = hold_hands(); }
   else if(state == 2){ nextState = check_brainwave(); }
   else if(state == 3){ nextState = finish(); }
   else if(state == 4){ nextState = result(); }
   if(state != nextState){ t_start = millis(); }
-    state = nextState;
+    if(state ==5 || state == 6 || state == 7){
+      if(keyPressed){
+        state = nextState;
+      }
+    }else{
+      state = nextState;
+    }
 }
+
 
 void oscEvent(OscMessage msg){
   float data;
